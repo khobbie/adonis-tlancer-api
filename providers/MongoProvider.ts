@@ -1,4 +1,5 @@
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
+import Env from '@ioc:Adonis/Core/Env'
 import { Mongoose } from 'mongoose'
 
 //
@@ -28,12 +29,14 @@ export default class MongoProvider {
   public async register() {
     // Register your own bindings
 
+    console.log(Env.get('MONGO_URL'));
+
     // Create new Mongoose instance
     const mongoose = new Mongoose()
 
     // Connect the instance to DB
     await mongoose
-      .connect("mongodb+srv://tlancer:Tlancer12345_@tlancer.fwwmg.mongodb.net/tlancerTestDB")
+      .connect(Env.get('MONGO_URL'))
       .then(() => console.log("connected"))
       .catch((e) => console.log(e));
     // Attach it to IOC container as singleton
