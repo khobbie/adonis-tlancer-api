@@ -1,4 +1,4 @@
-import Mongoose,{ Schema, model } from '@ioc:Mongoose'
+import Mongoose,{ Schema } from '@ioc:Mongoose'
 
 export default Mongoose.model('Pre-Registration',
   new Schema({
